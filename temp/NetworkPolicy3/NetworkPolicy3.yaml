@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+    creationTimestamp: "2020-10-29T13:58:00Z"
+    labels:
+        tufin-mode: auto-generated
+        tufin-owner: tufin-orca
+    name: default.customer
+    namespace: default
+spec:
+    ingress:
+      - from:
+          - namespaceSelector:
+                matchLabels:
+                    namespace: '' # missing label - see note 2 above
+    podSelector:
+        matchLabels:
+            app: customer
+    policyTypes:
+      - Ingress
